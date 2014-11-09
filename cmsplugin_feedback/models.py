@@ -10,11 +10,6 @@ class Message(models.Model):
     text = models.TextField(_('Message'))
     created_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        index_together = [
-            ['created_at'],
-        ]
-
 
 class Plugin(CMSPlugin):
     title = models.CharField(max_length=255)
