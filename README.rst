@@ -2,7 +2,7 @@ cmsplugin-feedback
 ================== 
 .. image:: https://travis-ci.org/satyrius/cmsplugin-feedback.svg?branch=master
 
-Feedback form plugin for Django CMS. WARNING, this is under development!
+Feedback form plugin for Django CMS.
 
 Requirements
 ------------
@@ -27,6 +27,7 @@ Update your ``settings.py`` ::
 Do not forget to include urls to ``urls.py`` ::
 
   urlpatterns = patterns('',
+      url(r'^captcha/', include('captcha.urls')),
       url(r'^feedback/', include('cmsplugin_feedback.urls')),
       url(r'^', include('cms.urls')),
   )
