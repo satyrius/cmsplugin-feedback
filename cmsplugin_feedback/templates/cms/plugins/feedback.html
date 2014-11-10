@@ -59,9 +59,7 @@
   {% endaddtoblock %}
   <form method="post" action="{% url "feedback-form" instance.id %}" id="feedback-form-{{ instance.id }}" class="{{ form_class }}">
     {% for field in form %}
-      <label for="{{ field.auto_id }}">{{ field.label|safe }}{% if field.field.required %}*{% endif %}</label>
-      <div class="error-message error-{{ field.name }}" style="display: none"></div>
-      {{ field }}
+      {% include "cms/plugins/feedback_field.html" %}
     {% endfor %}
     <button type="submit" class="btn">{{ instance.submit }}</button>
     {% csrf_token %}
