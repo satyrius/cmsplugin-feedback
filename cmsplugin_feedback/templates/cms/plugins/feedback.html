@@ -59,7 +59,7 @@
     {% for field in form %}
       {% include "cms/plugins/feedback_field.html" %}
     {% endfor %}
-    <button type="submit" class="btn">{{ instance.submit }}</button>
+    <button type="submit">{{ instance.submit }}</button>
     {% csrf_token %}
   </form>
 {% endblock %}
