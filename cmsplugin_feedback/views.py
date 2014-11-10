@@ -1,0 +1,39 @@
+# coding=utf-8
+import json
+
+from captcha.helpers import captcha_image_url
+from captcha.models import CaptchaStore
+from cms.models import CMSPlugin
+from django.views.generic import View
+from django.http import HttpResponse
+from django.utils.translation import ugettext_lazy as _
+
+
+class JsonResponse(HttpResponse):
+    def __init__(self, content, *args, **kwargs):
+        if isinstance(content, dict):
+            content = json.dumps(content)
+        super(JsonResponse, self).__init__(
+            content, content_type='application/json', *args, **kwargs)
+
+
+class FeedbackView(View):
+    def post(self, request, plugin, *args, **kwargs):
+        cms_plugin = CMSPlugin.objects.get(pk=plugin)
+        model, plugin = cms_plugin.get_plugin_instance()
+        form = plugin.message_form(self.request.POST,
+                                   auto_id=plugin.form_fields_id)
+        if not form.is_valid():
+            new_captcha = CaptchaStore.generate_key()
+            return JsonResponse({
+                'message': _('Validation error'),
+                'errors': form.errors,
+                'captcha': {
+                    'key': new_captcha,
+                    'img': captcha_image_url(new_captcha),
+                },
+            }, status=400)
+        form.save()
+        return JsonResponse({
+            'message': model.ok_message
+        })
