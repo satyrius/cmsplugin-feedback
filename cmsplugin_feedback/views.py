@@ -38,5 +38,6 @@ class FeedbackView(View):
             }, status=400)
         form.save()
         return JsonResponse({
-            'message': model.ok_message
+            'message': model.ok_message,
+            'id': form.instance.id,
         })
