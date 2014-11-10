@@ -1,4 +1,4 @@
-{% load staticfiles feedback_form sekizai_tags %}
+{% load staticfiles sekizai_tags %}
 
 {% block "feedback_title" %}
 <h1>
@@ -59,12 +59,9 @@
   {% endaddtoblock %}
   <form method="post" action="{% url "feedback-form" instance.id %}" id="feedback-form-{{ instance.id }}" class="{{ form_class }}">
     {% for field in form %}
-      {% if field|is_checkbox %}{{ field }}{% endif %}
       <label for="{{ field.auto_id }}">{{ field.label|safe }}{% if field.field.required %}*{% endif %}</label>
-      {% if not field|is_checkbox %}
-        <div class="error-message error-{{ field.name }}" style="display: none"></div>
-        {{ field }}
-      {% endif %}
+      <div class="error-message error-{{ field.name }}" style="display: none"></div>
+      {{ field }}
     {% endfor %}
     <button type="submit" class="btn">{{ instance.submit }}</button>
     {% csrf_token %}
