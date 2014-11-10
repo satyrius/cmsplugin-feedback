@@ -1,0 +1,72 @@
+{% load staticfiles feedback_form sekizai_tags %}
+
+{% block "feedback_title" %}
+<h1>
+  <div class="icon feedback"></div><br>{{ instance.title }}
+</h1>
+{% endblock %}
+
+{% block "feedback_form" %}
+  {% addtoblock "js" %}
+    <script type="text/javascript">
+      $(function() {
+        var form = $('#feedback-form-{{ instance.id }}');
+        noErrors = function() {
+          form.find('.error-message').hide();
+          inputs.removeClass('error');
+        }
+
+        var inputs = form.find(':input').not(':hidden').not(':submit');
+        var captchaHidden = form.find('[name=captcha_0]');
+        var captchaInput = form.find('[name=captcha_1]');
+        var captchaImage = form.find('img.captcha');
+
+        form.submit(function() {
+          $.post(form.attr('action'), form.serialize(), function(data) {
+            noErrors();
+            var message = $('<p/>').addClass('ok-message').text(data.message);
+            form.before(message);
+            form.remove();
+          }, 'json').error(function(xhr) {
+            var res = xhr.responseJSON;
+            if (res.errors) {
+              inputs.each(function(i, el) {
+                var input = $(el);
+                var key = input.attr('name').replace(/_\d+$/g, '');
+                var err = form.find('.error-' + key);
+                if (res.errors[key]) {
+                  input.addClass('error');
+                  err.show().text(res.errors[key][0]);
+                } else {
+                  input.removeClass('error');
+                  err.hide()
+                }
+              });
+
+              captchaInput.val('');
+              if (res.captcha) {
+                captchaHidden.val(res.captcha.key);
+                captchaImage.attr('src', res.captcha.img);
+              }
+            } else {
+              noErrors();
+            }
+          });
+          return false;
+        });
+      });
+    </script>
+  {% endaddtoblock %}
+  <form method="post" action="{% url "feedback-form" instance.id %}" id="feedback-form-{{ instance.id }}" class="{{ form_class }}">
+    {% for field in form %}
+      {% if field|is_checkbox %}{{ field }}{% endif %}
+      <label for="{{ field.auto_id }}">{{ field.label|safe }}{% if field.field.required %}*{% endif %}</label>
+      {% if not field|is_checkbox %}
+        <div class="error-message error-{{ field.name }}" style="display: none"></div>
+        {{ field }}
+      {% endif %}
+    {% endfor %}
+    <button type="submit" class="btn">{{ instance.submit }}</button>
+    {% csrf_token %}
+  </form>
+{% endblock %}
