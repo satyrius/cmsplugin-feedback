@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from cms.api import add_plugin
 from cms.models import Placeholder
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 from cmsplugin_feedback.cms_plugins import FeedbackPlugin, \
@@ -57,3 +58,11 @@ class FeedbackPluginTests(TestCase):
         html = plugin.render_plugin({})
         soup = BeautifulSoup(html)
         self.assertEqual(soup.find(type='submit').string, text)
+
+    def test_form_action_url(self):
+        plugin = self.add_plugin()
+        html = plugin.render_plugin({})
+        soup = BeautifulSoup(html)
+        self.assertEqual(
+            soup.form['action'],
+            reverse('feedback-form', args=[plugin.id]))
