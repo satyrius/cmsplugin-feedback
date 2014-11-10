@@ -11,7 +11,7 @@ class Message(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-class Plugin(CMSPlugin):
+class FeedbackPlugin(CMSPlugin):
     title = models.CharField(max_length=255)
     submit = models.CharField(
         _('Submit button value'),
