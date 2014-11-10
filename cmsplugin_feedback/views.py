@@ -9,6 +9,9 @@ from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 
 
+VALIDATION_ERROR = _('Validation error')
+
+
 class JsonResponse(HttpResponse):
     def __init__(self, content, *args, **kwargs):
         if isinstance(content, dict):
@@ -26,7 +29,7 @@ class FeedbackView(View):
         if not form.is_valid():
             new_captcha = CaptchaStore.generate_key()
             return JsonResponse({
-                'message': _('Validation error'),
+                'message': unicode(VALIDATION_ERROR),
                 'errors': form.errors,
                 'captcha': {
                     'key': new_captcha,
