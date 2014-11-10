@@ -1,9 +1,7 @@
-{% load staticfiles sekizai_tags %}
+{% load sekizai_tags %}
 
 {% block "feedback_title" %}
-<h1>
-  <div class="icon feedback"></div><br>{{ instance.title }}
-</h1>
+<h1>{{ instance.title }}</h1>
 {% endblock %}
 
 {% block "feedback_form" %}

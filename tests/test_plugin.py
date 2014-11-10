@@ -1,23 +1,29 @@
-from django.test import TestCase
-
+from bs4 import BeautifulSoup
 from cms.api import add_plugin
 from cms.models import Placeholder
+from django.test import TestCase
 
 from cmsplugin_feedback.cms_plugins import FeedbackPlugin, \
     DEFAULT_FORM_FIELDS_ID, DEFAULT_FORM_CLASS
 from cmsplugin_feedback.forms import FeedbackMessageForm
 
 
-class MypluginTests(TestCase):
-    def test_plugin_context(self):
-        placeholder = Placeholder.objects.create(slot='test')
+class FeedbackPluginTests(TestCase):
+    def setUp(self):
+        self.placeholder = Placeholder.objects.create(slot='test')
+
+    def add_plugin(self, **kwargs):
         model_instance = add_plugin(
-            placeholder,
+            self.placeholder,
             FeedbackPlugin,
             'en',
-        )
-        plugin_instance = model_instance.get_plugin_class_instance()
-        context = plugin_instance.render({}, model_instance, None)
+            **kwargs)
+        return model_instance
+
+    def test_plugin_context(self):
+        model = self.add_plugin()
+        plugin = model.get_plugin_class_instance()
+        context = plugin.render({}, model, None)
 
         self.assertIn('form', context)
         self.assertIsInstance(context['form'], FeedbackMessageForm)
@@ -25,3 +31,10 @@ class MypluginTests(TestCase):
 
         self.assertIn('form_class', context)
         self.assertEqual(context['form_class'], DEFAULT_FORM_CLASS)
+
+    def test_form_title(self):
+        title = 'Feedback Form'
+        model = self.add_plugin(title=title)
+        html = model.render_plugin({})
+        soup = BeautifulSoup(html)
+        self.assertEqual(soup.h1.string, title)

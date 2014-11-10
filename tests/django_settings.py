@@ -4,6 +4,7 @@ SITE_ID = 1
 SOUTH_TESTS_MIGRATE = True
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = ['--nologcapture']
+ROOT_URLCONF = 'urls'
 
 DATABASES = {
     'default': {
@@ -17,10 +18,12 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.sites',
     'django_nose',
-    'mptt',
+    'captcha',
     'cms',
-    'cmsplugin_feedback',
+    'mptt',
+    'sekizai',
     'south',
+    'cmsplugin_feedback',
 ]
 
 TEMPLATE_CONTEXT_PROCESSORS = [
