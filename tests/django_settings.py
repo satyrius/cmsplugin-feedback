@@ -5,6 +5,7 @@ SOUTH_TESTS_MIGRATE = True
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = ['--nologcapture']
 ROOT_URLCONF = 'urls'
+CAPTCHA_TEST_MODE = True
 
 DATABASES = {
     'default': {

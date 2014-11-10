@@ -17,17 +17,22 @@ FORM_CLASS = getattr(settings, 'FEEDBACK_FORM_CLASS', DEFAULT_FORM_CLASS)
 
 class FeedbackPlugin(CMSPluginBase):
     model = Plugin
-    message_form = FeedbackMessageForm
     name = _('Feedback Plugin')
     render_template = 'cms/plugins/feedback.html'
-    form_fields_id = FORM_FIELDS_ID
-    form_class = FORM_CLASS
+
+    _message_form = FeedbackMessageForm
+    _form_fields_id = FORM_FIELDS_ID
+    _form_class = FORM_CLASS
+
+    def get_form(self, *args, **kwargs):
+        kwargs['auto_id'] = self._form_fields_id
+        return self._message_form(*args, **kwargs)
 
     def render(self, context, instance, placeholder):
         context.update({
             'instance': instance,
-            'form': self.message_form(auto_id=self.form_fields_id),
-            'form_class': self.form_class,
+            'form': self.get_form(),
+            'form_class': self._form_class,
         })
         return context
 
