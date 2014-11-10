@@ -34,7 +34,16 @@ class FeedbackPluginTests(TestCase):
 
     def test_form_title(self):
         title = 'Feedback Form'
-        model = self.add_plugin(title=title)
-        html = model.render_plugin({})
+        plugin = self.add_plugin(title=title)
+        html = plugin.render_plugin({})
         soup = BeautifulSoup(html)
         self.assertEqual(soup.h1.string, title)
+
+    def test_default_submit_button(self):
+        plugin = self.add_plugin()
+        self.assertTrue(plugin.submit)
+        default = plugin._meta.get_field_by_name('submit')[0].default
+        self.assertEqual(plugin.submit, default)
+        html = plugin.render_plugin({})
+        soup = BeautifulSoup(html)
+        self.assertEqual(soup.find(type='submit').string, plugin.submit)
