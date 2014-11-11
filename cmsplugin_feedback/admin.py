@@ -8,8 +8,4 @@ class MessageAdmin(admin.ModelAdmin):
     readonly_fields = list_display
     ordering = ('-created_at',)
 
-    def queryset(self, request):
-        qs = super(MessageAdmin, self).queryset(request)
-        return qs.filter(question__isnull=True)
-
 admin.site.register(Message, MessageAdmin)
