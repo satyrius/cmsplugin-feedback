@@ -24,7 +24,7 @@ class FeedbackView(View):
     def post(self, request, plugin, *args, **kwargs):
         cms_plugin = CMSPlugin.objects.get(pk=plugin)
         model, plugin = cms_plugin.get_plugin_instance()
-        form = plugin.get_form(self.request.POST)
+        form = plugin.get_message_form(self.request.POST)
 
         if not form.is_valid():
             new_captcha = CaptchaStore.generate_key()

@@ -24,14 +24,14 @@ class FeedbackPlugin(CMSPluginBase):
     _form_fields_id = FORM_FIELDS_ID
     _form_class = FORM_CLASS
 
-    def get_form(self, *args, **kwargs):
+    def get_message_form(self, *args, **kwargs):
         kwargs['auto_id'] = self._form_fields_id
         return self._message_form(*args, **kwargs)
 
     def render(self, context, instance, placeholder):
         context.update({
             'instance': instance,
-            'form': self.get_form(),
+            'form': self.get_message_form(),
             'form_class': self._form_class,
         })
         return context
