@@ -5,56 +5,6 @@
 {% endblock %}
 
 {% block "feedback_form" %}
-  {% addtoblock "js" %}
-    <script type="text/javascript">
-      $(function() {
-        var form = $('#feedback-form-{{ instance.id }}');
-        noErrors = function() {
-          form.find('.error-message').hide();
-          inputs.removeClass('error');
-        }
-
-        var inputs = form.find(':input').not(':hidden').not(':submit');
-        var captchaHidden = form.find('[name=captcha_0]');
-        var captchaInput = form.find('[name=captcha_1]');
-        var captchaImage = form.find('img.captcha');
-
-        form.submit(function() {
-          $.post(form.attr('action'), form.serialize(), function(data) {
-            noErrors();
-            var message = $('<p/>').addClass('ok-message').text(data.message);
-            form.before(message);
-            form.remove();
-          }, 'json').error(function(xhr) {
-            var res = xhr.responseJSON;
-            if (res.errors) {
-              inputs.each(function(i, el) {
-                var input = $(el);
-                var key = input.attr('name').replace(/_\d+$/g, '');
-                var err = form.find('.error-' + key);
-                if (res.errors[key]) {
-                  input.addClass('error');
-                  err.show().text(res.errors[key][0]);
-                } else {
-                  input.removeClass('error');
-                  err.hide()
-                }
-              });
-
-              captchaInput.val('');
-              if (res.captcha) {
-                captchaHidden.val(res.captcha.key);
-                captchaImage.attr('src', res.captcha.img);
-              }
-            } else {
-              noErrors();
-            }
-          });
-          return false;
-        });
-      });
-    </script>
-  {% endaddtoblock %}
   <form method="post" action="{% url "feedback-form" instance.id %}" id="feedback-form-{{ instance.id }}" class="{{ form_class }}">
     {% for field in form %}
       {% include "cms/plugins/feedback_field.html" %}
@@ -63,3 +13,54 @@
     {% csrf_token %}
   </form>
 {% endblock %}
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+    $(function() {
+    var form = $('#feedback-form-{{ instance.id }}');
+    noErrors = function() {
+        form.find('.error-message').hide();
+        inputs.removeClass('error');
+    }
+
+    var inputs = form.find(':input').not(':hidden').not(':submit');
+    var captchaHidden = form.find('[name=captcha_0]');
+    var captchaInput = form.find('[name=captcha_1]');
+    var captchaImage = form.find('img.captcha');
+
+    form.submit(function() {
+        $.post(form.attr('action'), form.serialize(), function(data) {
+        noErrors();
+        var message = $('<p/>').addClass('ok-message').text(data.message);
+        form.before(message);
+        form.remove();
+        }, 'json').error(function(xhr) {
+        var res = xhr.responseJSON;
+        if (res.errors) {
+            inputs.each(function(i, el) {
+            var input = $(el);
+            var key = input.attr('name').replace(/_\d+$/g, '');
+            var err = form.find('.error-' + key);
+            if (res.errors[key]) {
+                input.addClass('error');
+                err.show().text(res.errors[key][0]);
+            } else {
+                input.removeClass('error');
+                err.hide()
+            }
+            });
+
+            captchaInput.val('');
+            if (res.captcha) {
+            captchaHidden.val(res.captcha.key);
+            captchaImage.attr('src', res.captcha.img);
+            }
+        } else {
+            noErrors();
+        }
+        });
+        return false;
+    });
+    });
+</script>
+{% endaddtoblock %}
