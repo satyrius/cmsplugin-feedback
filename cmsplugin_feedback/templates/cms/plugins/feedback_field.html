@@ -1,3 +1,4 @@
+{% load feedback_tags %}
 {% if field|is_checkbox %}{{ field }}{% endif %}
 <label for="{{ field.auto_id }}">{{ field.label|safe }}{% if field.field.required %}*{% endif %}</label>
 {% if not field|is_checkbox %}

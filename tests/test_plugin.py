@@ -25,6 +25,12 @@ class FeedbackPluginTests(TestCase):
     def render(self, plugin):
         return plugin.render_plugin(SekizaiContext())
 
+    def test_template_render(self):
+        plugin = self.add_plugin()
+        # Switch on template debug to catch all template errors
+        with self.settings(TEMPLATE_DEBUG=True):
+            self.render(plugin)
+
     def test_plugin_context(self):
         model = self.add_plugin()
         plugin = model.get_plugin_class_instance()
