@@ -1,4 +1,4 @@
-{% load sekizai_tags %}
+{% load sekizai_tags feedback_tags %}
 
 {% block "feedback_title" %}
 <h1>{{ instance.title }}</h1>
@@ -7,9 +7,18 @@
 {% block "feedback_form" %}
   <form method="post" action="{% url "feedback-form" instance.id %}" id="feedback-form-{{ instance.id }}" class="{{ form_class }}">
     {% for field in form %}
-      {% include "cms/plugins/feedback_field.html" %}
+      {% block "feedback_field" %}
+        {% if field|is_checkbox %}{{ field }}{% endif %}
+        <label for="{{ field.auto_id }}">{{ field.label|safe }}{% if field.field.required %}*{% endif %}</label>
+        {% if not field|is_checkbox %}
+          <div class="error-message error-{{ field.name }}" style="display: none"></div>
+          {{ field }}
+        {% endif %}
+      {% endblock %}
     {% endfor %}
-    {% include "cms/plugins/feedback_submit.html" %}
+    {% block "feedback_submit" %}
+      <button type="submit">{{ instance.submit }}</button>
+    {% endblock %}
     {% csrf_token %}
   </form>
 {% endblock %}
