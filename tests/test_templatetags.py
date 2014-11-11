@@ -1,6 +1,6 @@
+from unittest import TestCase
 from django import forms
 from django.template import Template, Context
-from django.test import TestCase
 
 
 class MyForm(forms.Form):
