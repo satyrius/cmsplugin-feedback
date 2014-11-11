@@ -3,7 +3,9 @@ cmsplugin-feedback
 ================== 
 .. image:: https://travis-ci.org/satyrius/cmsplugin-feedback.svg?branch=master
 
-Feedback form plugin for Django CMS.
+Feedback form plugin for Django CMS [#]_
+
+.. image:: https://cloud.githubusercontent.com/assets/278630/5002184/c4bbe36a-6a0e-11e4-8c5d-024ec11d2c94.png
 
 Requirements
 ============
@@ -59,3 +61,5 @@ Roadmap
 Contributing
 ============
 Fork the repo, create a feature branch then send me pull request. Feel free to create new issues or contact me using email.
+
+.. [#] Form style depends on your design, this is just an example. You should customize it with your own CSS.
