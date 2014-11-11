@@ -1,3 +1,6 @@
+{% if field|is_checkbox %}{{ field }}{% endif %}
 <label for="{{ field.auto_id }}">{{ field.label|safe }}{% if field.field.required %}*{% endif %}</label>
-<div class="error-message error-{{ field.name }}" style="display: none"></div>
-{{ field }}
+{% if not field|is_checkbox %}
+  <div class="error-message error-{{ field.name }}" style="display: none"></div>
+  {{ field }}
+{% endif %}
