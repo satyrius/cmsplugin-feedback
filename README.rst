@@ -57,6 +57,7 @@ Roadmap
 - Django 1.7 and Python 3 support
 - Both sync and async form posting workflow. To cover number of cases — no javascript (realy?); no jquery on the page; you dont want to use async workflow and want to refresh a page.
 - Form without captcha (if you dont need it or for registered users)
+- Notify site managers about new feedback messages
 
 Contributing
 ============
