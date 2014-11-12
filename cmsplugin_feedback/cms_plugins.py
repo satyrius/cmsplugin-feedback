@@ -2,6 +2,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.conf import settings
 from django.utils.translation import ugettext as _
+from django.utils.importlib import import_module
 
 from .forms import FeedbackMessageForm
 from .models import FeedbackPlugin as Plugin
@@ -21,9 +22,16 @@ class FeedbackPlugin(CMSPluginBase):
     name = _('Feedback Plugin')
     render_template = 'cms/plugins/feedback.html'
 
-    _message_form = FeedbackMessageForm
     _form_fields_id = FORM_FIELDS_ID
     _form_class = FORM_CLASS
+
+    @property
+    def _message_form(self):
+        form = getattr(settings, 'CMS_FEEDBACK_FORM', None)
+        if form:
+            module, cls = form.rsplit('.', 1)
+            return getattr(import_module(module), cls)
+        return FeedbackMessageForm
 
     def get_message_form(self, *args, **kwargs):
         kwargs['auto_id'] = self._form_fields_id
