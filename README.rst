@@ -27,10 +27,10 @@ or to add it to your assets builder, etc.
 
 Installation
 ============
-This library is under development and is not published on *pipi*, so you have to install it from repository by branch name, tag or commit hash ::
+::
 
-  $ pip install -e git@github.com:satyrius/cmsplugin-feedback.git@master#egg=cmsplugin_feedback
-  
+  $ pip install cmsplugin-feedback
+
 Update your ``settings.py`` ::
 
   INSTALLED_APPS = [
