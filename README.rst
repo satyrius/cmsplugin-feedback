@@ -2,6 +2,7 @@
 cmsplugin-feedback
 ================== 
 .. image:: https://travis-ci.org/satyrius/cmsplugin-feedback.svg?branch=master
+    :target: https://travis-ci.org/satyrius/cmsplugin-feedback
 
 Feedback form plugin for Django CMS [#]_
 
