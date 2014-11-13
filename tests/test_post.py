@@ -11,7 +11,7 @@ from mock import patch
 from cmsplugin_feedback.cms_plugins import FeedbackPlugin
 from cmsplugin_feedback.forms import FeedbackMessageForm
 from cmsplugin_feedback.models import Message
-from cmsplugin_feedback.views import JsonResponse, VALIDATION_ERROR
+from cmsplugin_feedback.views import JsonResponse, VALIDATION_ERROR, OK
 
 
 class FormPostTest(TestCase):
@@ -69,7 +69,7 @@ class FormPostTest(TestCase):
         self.assertNotIn('errors', res)
         self.assertNotIn('captcha', res)
         self.assertIn('message', res)
-        self.assertEqual(res['message'], self.plugin.ok_message)
+        self.assertEqual(res['message'], OK)
         self.assertTrue(save.called)
 
     @freeze_time('2014-11-10 23:44:00')

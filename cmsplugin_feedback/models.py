@@ -12,6 +12,5 @@ class Message(models.Model):
 
 
 class FeedbackPlugin(CMSPlugin):
-    ok_message = models.TextField(
-        _('Success submition message'),
-        default='Your message was sent. Thank you for feedback!')
+    # Keep this model for future plugin customization options
+    pass
