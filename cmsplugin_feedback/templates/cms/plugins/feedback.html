@@ -1,9 +1,5 @@
 {% load sekizai_tags feedback_tags %}
 
-{% block "feedback_title" %}
-<h1>{{ instance.title }}</h1>
-{% endblock %}
-
 {% block "feedback_form" %}
   <form method="post" action="{% url "feedback-form" instance.id %}" id="feedback-form-{{ instance.id }}" class="{{ form_class }}">
     {% for field in form %}

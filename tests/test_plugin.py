@@ -64,13 +64,6 @@ class FeedbackPluginTests(TestCase):
         self.assertIn('form_class', context)
         self.assertEqual(context['form_class'], DEFAULT_FORM_CLASS)
 
-    def test_form_title(self):
-        title = 'Feedback Form'
-        plugin = self.add_plugin(title=title)
-        html = self.render(plugin)
-        soup = BeautifulSoup(html)
-        self.assertEqual(soup.h1.string, title)
-
     def test_default_submit_button(self):
         plugin = self.add_plugin()
         self.assertTrue(plugin.submit)
