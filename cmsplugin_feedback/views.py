@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 VALIDATION_ERROR = _('Validation error')
+OK = _('You message was sent. Thank you!')
 
 
 class JsonResponse(HttpResponse):
@@ -38,6 +39,6 @@ class FeedbackView(View):
             }, status=400)
         form.save()
         return JsonResponse({
-            'message': model.ok_message,
+            'message': unicode(OK),
             'id': form.instance.id,
         })

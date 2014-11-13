@@ -12,14 +12,5 @@ class Message(models.Model):
 
 
 class FeedbackPlugin(CMSPlugin):
-    title = models.CharField(max_length=255)
-    submit = models.CharField(
-        _('Submit button value'),
-        default=_('Submit'),
-        max_length=30)
-    ok_message = models.TextField(
-        _('Success submition message'),
-        default='Your message was sent. Thank you for feedback!')
-
-    def __unicode__(self):
-        return self.title
+    # Keep this model for future plugin customization options
+    pass
