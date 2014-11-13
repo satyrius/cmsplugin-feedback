@@ -1,4 +1,4 @@
-{% load sekizai_tags feedback_tags %}
+{% load sekizai_tags feedback_tags i18n %}
 
 {% block "feedback_form" %}
   <form method="post" action="{% url "feedback-form" instance.id %}" id="feedback-form-{{ instance.id }}" class="{{ form_class }}">
