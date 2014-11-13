@@ -2,6 +2,7 @@
 cmsplugin-feedback
 ================== 
 .. image:: https://travis-ci.org/satyrius/cmsplugin-feedback.svg?branch=master
+    :target: https://travis-ci.org/satyrius/cmsplugin-feedback
 
 Feedback form plugin for Django CMS [#]_
 
@@ -58,6 +59,10 @@ Roadmap
 - Both sync and async form posting workflow. To cover number of cases — no javascript (realy?); no jquery on the page; you dont want to use async workflow and want to refresh a page.
 - Form without captcha (if you dont need it or for registered users)
 - Notify site managers about new feedback messages
+
+Changelog
+=========
+The changelog could be found at `repo's release notes <https://github.com/satyrius/cmsplugin-feedback/releases>`_
 
 Contributing
 ============
