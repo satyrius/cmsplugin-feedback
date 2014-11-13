@@ -59,6 +59,10 @@ Roadmap
 - Form without captcha (if you dont need it or for registered users)
 - Notify site managers about new feedback messages
 
+Changelog
+=========
+The changelog could be found at `repo's release notes <https://github.com/satyrius/cmsplugin-feedback/releases>`_
+
 Contributing
 ============
 Fork the repo, create a feature branch then send me pull request. Feel free to create new issues or contact me using email.
