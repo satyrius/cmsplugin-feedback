@@ -64,25 +64,6 @@ class FeedbackPluginTests(TestCase):
         self.assertIn('form_class', context)
         self.assertEqual(context['form_class'], DEFAULT_FORM_CLASS)
 
-    def test_default_submit_button(self):
-        plugin = self.add_plugin()
-        self.assertTrue(plugin.submit)
-        default = plugin._meta.get_field_by_name('submit')[0].default
-        self.assertEqual(plugin.submit, default)
-        html = self.render(plugin)
-        soup = BeautifulSoup(html)
-        self.assertEqual(soup.find(type='submit').string, default)
-
-    def test_submit_button(self):
-        text = 'Send'
-        plugin = self.add_plugin(submit=text)
-        default = plugin._meta.get_field_by_name('submit')[0].default
-        self.assertNotEqual(text, default)
-        self.assertEqual(plugin.submit, text)
-        html = self.render(plugin)
-        soup = BeautifulSoup(html)
-        self.assertEqual(soup.find(type='submit').string, text)
-
     def test_form_action_url(self):
         plugin = self.add_plugin()
         html = self.render(plugin)

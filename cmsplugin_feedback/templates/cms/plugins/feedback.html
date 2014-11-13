@@ -13,7 +13,7 @@
       {% endblock %}
     {% endfor %}
     {% block "feedback_submit" %}
-      <button type="submit">{{ instance.submit }}</button>
+      <button type="submit">{% trans "Submit" }</button>
     {% endblock %}
     {% csrf_token %}
   </form>
