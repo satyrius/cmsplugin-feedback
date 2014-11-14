@@ -15,16 +15,16 @@ Python
 ------
 It works fine and tested under ``Python 2.7``. The following libraries are required
 
-- ``Django`` 1.5 or 1.6 (we droped support for Django 1.4, and do not support Django 1.7)
-- ``django-cms`` >= 3.0 (we recommend you to use Django CMS 3.0 and higher, contact us if you need prior CMS versions supports and have some issues)
+- ``Django`` 1.5 or 1.6 (we dropped support for Django 1.4, and do not support Django 1.7)
+- ``django-cms`` >= 3.0 (we recommend to use Django CMS 3.0 and higher, contact us if you need prior CMS versions supports and have some issues)
 - ``django-simple-captcha`` >= 0.4.1
 
-JavaScipt
+JavaScript
 ---------
 
-The feedback form use ``jQuery`` to post form data asynchronously.
+The feedback form uses ``jQuery`` to post form data asynchronously.
 You should take care of this library and include it to your page directly, 
-or to add it to your assets builder, etc.
+or add it to your assets builder, etc.
 
 Installation
 ============
@@ -40,7 +40,7 @@ Update your ``settings.py`` ::
       'cmsplugin_feedback',
   ]
   
-Do not forget to include urls to ``urls.py`` ::
+Do not forget to include URLs to ``urls.py`` ::
 
   urlpatterns = patterns('',
       url(r'^captcha/', include('captcha.urls')),
@@ -56,16 +56,16 @@ Roadmap
 =======
 - Translations
 - Django 1.7 and Python 3 support
-- Both sync and async form posting workflow. To cover number of cases — no javascript (realy?); no jquery on the page; you dont want to use async workflow and want to refresh a page.
+- Both sync and async form posting workflow. To cover number of cases — no javascript (really?); no jquery on the page; you don't want to use async workflow and want to refresh a page.
 - Form without captcha (if you dont need it or for registered users)
 - Notify site managers about new feedback messages
 
 Changelog
 =========
-The changelog could be found at `repo's release notes <https://github.com/satyrius/cmsplugin-feedback/releases>`_
+The changelog can be found at `repo's release notes <https://github.com/satyrius/cmsplugin-feedback/releases>`_
 
 Contributing
 ============
-Fork the repo, create a feature branch then send me pull request. Feel free to create new issues or contact me using email.
+Fork the repo, create a feature branch then send me pull request. Feel free to create new issues or contact me via email.
 
 .. [#] Form style depends on your design, this is just an example. You should customize it with your own CSS.
