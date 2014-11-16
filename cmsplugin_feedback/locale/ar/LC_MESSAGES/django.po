@@ -25,7 +25,7 @@ msgstr "ملحق التواصل"
 
 #: forms.py:11
 msgid "Type the code shown"
-msgstr "الجاء إدخال الحروف الظاهرة"
+msgstr "الرجاء إدخال الحروف الظاهرة"
 
 #: models.py:8
 msgid "Name"
