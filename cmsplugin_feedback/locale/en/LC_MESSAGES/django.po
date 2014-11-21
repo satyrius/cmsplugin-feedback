@@ -42,7 +42,7 @@ msgid "Validation error"
 msgstr ""
 
 #: views.py:13
-msgid "You message was sent. Thank you!"
+msgid "Your message was sent. Thank you!"
 msgstr ""
 
 #: templates/cms/plugins/feedback.html:24

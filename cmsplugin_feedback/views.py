@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 VALIDATION_ERROR = _('Validation error')
-OK = _('You message was sent. Thank you!')
+OK = _('Your message was sent. Thank you!')
 
 
 class JsonResponse(HttpResponse):

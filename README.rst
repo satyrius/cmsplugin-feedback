@@ -8,6 +8,8 @@ Feedback form plugin for Django CMS [#]_
 
 .. image:: https://cloud.githubusercontent.com/assets/278630/5002184/c4bbe36a-6a0e-11e4-8c5d-024ec11d2c94.png
 
+.. [#] Form style depends on your design, this is just an example. You should customize it with your own CSS.
+
 Requirements
 ============
 
@@ -20,7 +22,7 @@ It works fine and tested under ``Python 2.7``. The following libraries are requi
 - ``django-simple-captcha`` >= 0.4.1
 
 JavaScript
----------
+----------
 
 The feedback form uses ``jQuery`` to post form data asynchronously.
 You should take care of this library and include it to your page directly, 
@@ -68,4 +70,8 @@ Contributing
 ============
 Fork the repo, create a feature branch then send me pull request. Feel free to create new issues or contact me via email.
 
-.. [#] Form style depends on your design, this is just an example. You should customize it with your own CSS.
+Translation
+-----------
+You could also help me to translate `cmsplugin-feedback` to your native language `with Transifex <https://www.transifex.com/projects/p/cmsplugin-feedback/resource/main/>`_ 
+
+.. image:: https://www.transifex.com/projects/p/cmsplugin-feedback/resource/main/chart/image_png
