@@ -44,7 +44,7 @@ msgid "Validation error"
 msgstr "فشل التحقق"
 
 #: views.py:13
-msgid "You message was sent. Thank you!"
+msgid "Your message was sent. Thank you!"
 msgstr "تم إرسال الرسالة بنجاح. شكرا لك!"
 
 #: templates/cms/plugins/feedback.html:24

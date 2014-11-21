@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Anton Egorov <anton.egoroff@gmail.com>, 2014
 msgid ""
@@ -43,7 +43,7 @@ msgid "Validation error"
 msgstr "Ошибка валидации"
 
 #: views.py:13
-msgid "You message was sent. Thank you!"
+msgid "Your message was sent. Thank you!"
 msgstr "Ваше сообщение отправлено. Спасибо!"
 
 #: templates/cms/plugins/feedback.html:24
