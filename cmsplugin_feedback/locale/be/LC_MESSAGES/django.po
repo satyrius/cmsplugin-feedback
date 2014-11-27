@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Anton Egorov <anton.egoroff@gmail.com>, 2014
+# Den Bozhok <undying.k@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-feedback\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-16 02:38+0300\n"
+"PO-Revision-Date: 2014-11-27 15:16+0000\n"
+"Last-Translator: Anton Egorov <anton.egoroff@gmail.com>\n"
+"Language-Team: Belarusian (http://www.transifex.com/projects/p/cmsplugin-feedback/language/be/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: be\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: cms_plugins.py:22
+msgid "Feedback Plugin"
+msgstr "Форма адваротнай сувязі"
+
+#: forms.py:11
+msgid "Type the code shown"
+msgstr "Увядзіце тэкст з малюнку"
+
+#: models.py:8
+msgid "Name"
+msgstr "Імя"
+
+#: models.py:9
+msgid "Email"
+msgstr "Электронная пошта"
+
+#: models.py:10
+msgid "Message"
+msgstr "Пасланне"
+
+#: views.py:12
+msgid "Validation error"
+msgstr "Памылка праверки"
+
+#: views.py:13
+msgid "Your message was sent. Thank you!"
+msgstr "Ваше пасланне адпраўлена. Дзякуй!"
+
+#: templates/cms/plugins/feedback.html:24
+msgid "Your message was sent. Thank you for feedback!"
+msgstr "Ваше пасланне адпраўлена! Дзякуй за вашу адзнаку!"
