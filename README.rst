@@ -73,5 +73,3 @@ Fork the repo, create a feature branch then send me pull request. Feel free to c
 Translation
 -----------
 You could also help me to translate `cmsplugin-feedback` to your native language `with Transifex <https://www.transifex.com/projects/p/cmsplugin-feedback/resource/main/>`_ 
-
-.. image:: https://www.transifex.com/projects/p/cmsplugin-feedback/resource/main/chart/image_png
