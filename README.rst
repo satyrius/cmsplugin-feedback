@@ -56,7 +56,6 @@ And to migrate your database ::
   
 Roadmap
 =======
-- Translations
 - Django 1.7 and Python 3 support
 - Both sync and async form posting workflow. To cover number of cases — no javascript (really?); no jquery on the page; you don't want to use async workflow and want to refresh a page.
 - Form without captcha (if you dont need it or for registered users)
