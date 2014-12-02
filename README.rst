@@ -1,8 +1,19 @@
 ================== 
 cmsplugin-feedback
 ================== 
-.. image:: https://travis-ci.org/satyrius/cmsplugin-feedback.svg?branch=master
+
+|ci| |pypi| |status|
+
+.. |ci| image:: https://travis-ci.org/satyrius/cmsplugin-feedback.svg?branch=master
     :target: https://travis-ci.org/satyrius/cmsplugin-feedback
+    
+.. |pypi| image:: https://pypip.in/version/cmsplugin-feedback/badge.png?text=pypi
+    :target: https://pypi.python.org/pypi/cmsplugin-feedback/
+    :alt: Latest Version
+    
+.. |status| image:: https://pypip.in/status/cmsplugin-feedback/badge.png
+    :target: https://pypi.python.org/pypi/cmsplugin-feedback/
+    :alt: Development Status
 
 Feedback form plugin for Django CMS [#]_
 
