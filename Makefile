@@ -1,5 +1,5 @@
 export PYTHONPATH := $(CURDIR):$(CURDIR)/tests
-export DJANGO_SETTINGS_MODULE := django_settings
+export DJANGO_SETTINGS_MODULE := settings_17
 
 messages:
 	cd cmsplugin_feedback && django-admin.py makemessages --all
@@ -7,5 +7,8 @@ messages:
 compile:
 	cd cmsplugin_feedback && django-admin.py compilemessages
 
-migration:
+south_migration:
 	django-admin.py schemamigration cmsplugin_feedback --auto || true
+
+migration:
+	django-admin.py makemigrations cmsplugin_feedback
