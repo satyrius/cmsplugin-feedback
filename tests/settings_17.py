@@ -6,3 +6,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware'
 )
+
+MIGRATION_MODULES = {
+    'cms': 'cms.migrations_django',
+}
