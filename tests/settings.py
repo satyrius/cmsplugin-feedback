@@ -6,6 +6,9 @@ NOSE_ARGS = ['--nologcapture']
 ROOT_URLCONF = 'urls'
 CAPTCHA_TEST_MODE = True
 
+STATIC_ROOT = '/tmp/cmsplugin_feedback/static/'
+MEDIA_ROOT = '/tmp/cmsplugin_feedback/media/'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
