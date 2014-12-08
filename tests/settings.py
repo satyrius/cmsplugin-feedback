@@ -1,11 +1,13 @@
 LANGUAGE_CODE = 'en'
 SECRET_KEY = 'ji2r2iGkZqJVbWDhXrgDKDR2qG#mmtvBZXPXDugA4H)KFLwLHy'
 SITE_ID = 1
-SOUTH_TESTS_MIGRATE = True
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = ['--nologcapture']
 ROOT_URLCONF = 'urls'
 CAPTCHA_TEST_MODE = True
+
+STATIC_ROOT = '/tmp/cmsplugin_feedback/static/'
+MEDIA_ROOT = '/tmp/cmsplugin_feedback/media/'
 
 DATABASES = {
     'default': {
@@ -23,7 +25,6 @@ INSTALLED_APPS = [
     'cms',
     'mptt',
     'sekizai',
-    'south',
     'cmsplugin_feedback',
 ]
 
