@@ -1,16 +1,16 @@
-================== 
+==================
 cmsplugin-feedback
-================== 
+==================
 
 |ci| |pypi| |status|
 
 .. |ci| image:: https://travis-ci.org/satyrius/cmsplugin-feedback.svg?branch=master
     :target: https://travis-ci.org/satyrius/cmsplugin-feedback
-    
+
 .. |pypi| image:: https://pypip.in/version/cmsplugin-feedback/badge.png?text=pypi
     :target: https://pypi.python.org/pypi/cmsplugin-feedback/
     :alt: Latest Version
-    
+
 .. |status| image:: https://pypip.in/status/cmsplugin-feedback/badge.png
     :target: https://pypi.python.org/pypi/cmsplugin-feedback/
     :alt: Development Status
@@ -28,7 +28,7 @@ Python
 ------
 It works fine and tested under ``Python 2.7``. The following libraries are required
 
-- ``Django`` 1.5 or 1.6 (we dropped support for Django 1.4, and do not support Django 1.7)
+- ``Django`` >=1.5
 - ``django-cms`` >= 3.0 (we recommend to use Django CMS 3.0 and higher, contact us if you need prior CMS versions supports and have some issues)
 - ``django-simple-captcha`` >= 0.4.1
 
@@ -36,7 +36,7 @@ JavaScript
 ----------
 
 The feedback form uses ``jQuery`` to post form data asynchronously.
-You should take care of this library and include it to your page directly, 
+You should take care of this library and include it to your page directly,
 or add it to your assets builder, etc.
 
 Installation
@@ -52,7 +52,7 @@ Update your ``settings.py`` ::
       'captcha',
       'cmsplugin_feedback',
   ]
-  
+
 Do not forget to include URLs to ``urls.py`` ::
 
   urlpatterns = patterns('',
@@ -64,10 +64,10 @@ Do not forget to include URLs to ``urls.py`` ::
 And to migrate your database ::
 
   django-admin.py migrate captcha cmsplugin_feedback
-  
+
 Roadmap
 =======
-- Django 1.7 and Python 3 support
+- Python 3 support
 - Both sync and async form posting workflow. To cover number of cases — no javascript (really?); no jquery on the page; you don't want to use async workflow and want to refresh a page.
 - Form without captcha (if you dont need it or for registered users)
 - Notify site managers about new feedback messages
@@ -82,4 +82,4 @@ Fork the repo, create a feature branch then send me pull request. Feel free to c
 
 Translation
 -----------
-You could also help me to translate `cmsplugin-feedback` to your native language `with Transifex <https://www.transifex.com/projects/p/cmsplugin-feedback/resource/main/>`_ 
+You could also help me to translate `cmsplugin-feedback` to your native language `with Transifex <https://www.transifex.com/projects/p/cmsplugin-feedback/resource/main/>`_
