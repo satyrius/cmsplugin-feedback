@@ -4,7 +4,7 @@ cmsplugin-feedback
 
 |ci| |pypi| |status|
 
-.. |ci| image:: https://travis-ci.org/satyrius/cmsplugin-feedback.svg?branch=master
+.. |ci| image:: https://travis-ci.org/satyrius/cmsplugin-feedback.png?branch=master
     :target: https://travis-ci.org/satyrius/cmsplugin-feedback
 
 .. |pypi| image:: https://pypip.in/version/cmsplugin-feedback/badge.png?text=pypi
