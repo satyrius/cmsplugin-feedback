@@ -6,11 +6,12 @@ from cms.models import Placeholder
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from freezegun import freeze_time
-from mock import patch
+from mock import patch, Mock
 
 from cmsplugin_feedback.cms_plugins import FeedbackPlugin
 from cmsplugin_feedback.forms import FeedbackMessageForm
 from cmsplugin_feedback.models import Message
+from cmsplugin_feedback.signals import form_submited
 from cmsplugin_feedback.views import JsonResponse, VALIDATION_ERROR, OK
 
 
@@ -88,3 +89,22 @@ class FormPostTest(TestCase):
         self.assertEqual(message.email, data['email'])
         self.assertEqual(message.text, data['text'])
         self.assertEqual(message.created_at, dt.datetime.now())
+
+    def test_signal_sent(self):
+        handler = Mock()
+        form_submited.connect(handler)
+
+        data = {
+            'name': 'Anton Egorov',
+            'email': 'aeg@example.com',
+            'text': 'Thank you!',
+        }
+        posting = {
+            'captcha_0': 'captcha_key',
+            'captcha_1': 'passed',
+        }
+        posting.update(data)
+        self.post(posting, expect_code=200)
+        handler.assert_called_once()
+        args, kwargs = handler.call_args
+        self.assertDictContainsSubset(data, kwargs)
