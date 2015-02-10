@@ -20,6 +20,13 @@ class FormPostTest(TestCase):
         placeholder = Placeholder.objects.create(slot='test')
         self.plugin = add_plugin(placeholder, FeedbackPlugin, 'en')
         self.url = reverse('feedback-form', args=[self.plugin.id])
+        self.ok_data = {
+            'name': 'Anton Egorov',
+            'email': 'aeg@example.com',
+            'text': 'Thank you!',
+            'captcha_0': 'captcha_key',
+            'captcha_1': 'passed',
+        }
 
     def post(self, data, expect_code=None):
         res = self.client.post(self.url, data)
@@ -75,36 +82,19 @@ class FormPostTest(TestCase):
 
     @freeze_time('2014-11-10 23:44:00')
     def test_save_message(self):
-        data = {
-            'name': 'Anton Egorov',
-            'email': 'aeg@example.com',
-            'text': 'Thank you!',
-            'captcha_0': 'captcha_key',
-            'captcha_1': 'passed',
-        }
-        res = self.post(data, expect_code=200)
+        res = self.post(self.ok_data, expect_code=200)
         self.assertIn('id', res)
         message = Message.objects.get(pk=res['id'])
-        self.assertEqual(message.name, data['name'])
-        self.assertEqual(message.email, data['email'])
-        self.assertEqual(message.text, data['text'])
+        self.assertEqual(message.name, self.ok_data['name'])
+        self.assertEqual(message.email, self.ok_data['email'])
+        self.assertEqual(message.text, self.ok_data['text'])
         self.assertEqual(message.created_at, dt.datetime.now())
 
     def test_signal_sent(self):
         handler = Mock()
         form_submited.connect(handler)
-
-        data = {
-            'name': 'Anton Egorov',
-            'email': 'aeg@example.com',
-            'text': 'Thank you!',
-        }
-        posting = {
-            'captcha_0': 'captcha_key',
-            'captcha_1': 'passed',
-        }
-        posting.update(data)
-        self.post(posting, expect_code=200)
+        self.post(self.ok_data, expect_code=200)
         handler.assert_called_once()
         args, kwargs = handler.call_args
-        self.assertDictContainsSubset(data, kwargs)
+        self.assertIn('message', kwargs)
+        self.assertIsInstance(kwargs['message'], Message)
