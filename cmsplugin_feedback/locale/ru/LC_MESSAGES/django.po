@@ -4,12 +4,15 @@
 # 
 # Translators:
 # Anton Egorov <anton.egoroff@gmail.com>, 2014-2015
+# 
+# Translators:
+# Anton Egorov <anton.egoroff@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: cmsplugin-feedback\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-16 07:43-0600\n"
-"PO-Revision-Date: 2015-02-16 14:46+0000\n"
+"POT-Creation-Date: 2015-02-16 09:40-0600\n"
+"PO-Revision-Date: 2015-02-16 15:42+0000\n"
 "Last-Translator: Anton Egorov <anton.egoroff@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/cmsplugin-feedback/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -49,8 +52,8 @@ msgstr "Вы получили сообщение от пользователя %
 
 #: templates/cms/plugins/feedback-email.html:3
 #, python-format
-msgid "You can respond to it using <a href=\"%(url)s\">admin</a>."
-msgstr "Вы можете ответить используя <a href=\"%(url)s\">интерфейс для администрирования</a>."
+msgid "You can respond to it using admin %(url)s."
+msgstr "Вы можете ответить на него используя интерфейс администрирования по ссылке %(url)s."
 
 #: templates/cms/plugins/feedback-email.html:4
 msgid "The original message is:"
