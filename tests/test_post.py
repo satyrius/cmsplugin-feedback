@@ -4,6 +4,7 @@ import json
 from cms.api import add_plugin
 from cms.models import Placeholder
 from django.core.urlresolvers import reverse
+from django.http import HttpRequest
 from django.test import TestCase
 from freezegun import freeze_time
 from mock import patch, Mock
@@ -98,3 +99,5 @@ class FormPostTest(TestCase):
         args, kwargs = handler.call_args
         self.assertIn('message', kwargs)
         self.assertIsInstance(kwargs['message'], Message)
+        self.assertIn('request', kwargs)
+        self.assertIsInstance(kwargs['request'], HttpRequest)
