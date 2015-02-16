@@ -7,7 +7,7 @@ from mock import patch
 from sekizai.context import SekizaiContext
 
 from cmsplugin_feedback.cms_plugins import FeedbackPlugin, \
-    DEFAULT_FORM_FIELDS_ID, DEFAULT_FORM_CLASS
+    DEFAULT_FORM_FIELDS_ID
 from cmsplugin_feedback.forms import FeedbackMessageForm
 
 
@@ -60,9 +60,6 @@ class FeedbackPluginTests(TestCase):
         self.assertTrue(get_form.called)
         self.assertIn('form', context)
         self.assertEqual(context['form'], get_form.return_value)
-
-        self.assertIn('form_class', context)
-        self.assertEqual(context['form_class'], DEFAULT_FORM_CLASS)
 
     def test_form_action_url(self):
         plugin = self.add_plugin()

@@ -12,10 +12,6 @@ DEFAULT_FORM_FIELDS_ID = 'contact-%s'
 FORM_FIELDS_ID = getattr(
     settings, 'CMS_FEEDBACK_FORM_FIELD_ID', DEFAULT_FORM_FIELDS_ID)
 
-DEFAULT_FORM_CLASS = 'contact-form'
-FORM_CLASS = getattr(
-    settings, 'CMS_FEEDBACK_FORM_CSS_CLASS', DEFAULT_FORM_CLASS)
-
 
 class FeedbackPlugin(CMSPluginBase):
     model = Plugin
@@ -23,7 +19,6 @@ class FeedbackPlugin(CMSPluginBase):
     render_template = 'cms/plugins/feedback.html'
 
     _form_fields_id = FORM_FIELDS_ID
-    _form_class = FORM_CLASS
 
     @property
     def _message_form(self):
@@ -41,7 +36,6 @@ class FeedbackPlugin(CMSPluginBase):
         context.update({
             'instance': instance,
             'form': self.get_message_form(),
-            'form_class': self._form_class,
         })
         return context
 
