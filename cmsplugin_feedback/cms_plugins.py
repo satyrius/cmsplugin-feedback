@@ -8,17 +8,10 @@ from .forms import FeedbackMessageForm
 from .models import FeedbackPlugin as Plugin
 
 
-DEFAULT_FORM_FIELDS_ID = 'contact-%s'
-FORM_FIELDS_ID = getattr(
-    settings, 'CMS_FEEDBACK_FORM_FIELD_ID', DEFAULT_FORM_FIELDS_ID)
-
-
 class FeedbackPlugin(CMSPluginBase):
     model = Plugin
     name = _('Feedback Plugin')
     render_template = 'cms/plugins/feedback.html'
-
-    _form_fields_id = FORM_FIELDS_ID
 
     @property
     def _message_form(self):
@@ -29,7 +22,6 @@ class FeedbackPlugin(CMSPluginBase):
         return FeedbackMessageForm
 
     def get_message_form(self, *args, **kwargs):
-        kwargs['auto_id'] = self._form_fields_id
         return self._message_form(*args, **kwargs)
 
     def render(self, context, instance, placeholder):

@@ -6,8 +6,7 @@ from django.test import TestCase
 from mock import patch
 from sekizai.context import SekizaiContext
 
-from cmsplugin_feedback.cms_plugins import FeedbackPlugin, \
-    DEFAULT_FORM_FIELDS_ID
+from cmsplugin_feedback.cms_plugins import FeedbackPlugin
 from cmsplugin_feedback.forms import FeedbackMessageForm
 
 
@@ -41,7 +40,6 @@ class FeedbackPluginTests(TestCase):
         plugin = model.get_plugin_class_instance()
         form = plugin.get_message_form()
         self.assertIsInstance(form, FeedbackMessageForm)
-        self.assertEqual(form.auto_id, DEFAULT_FORM_FIELDS_ID)
 
     def test_custom_message_form_by_name(self):
         model = self.add_plugin()
@@ -49,7 +47,6 @@ class FeedbackPluginTests(TestCase):
         with self.settings(CMS_FEEDBACK_FORM='test_plugin.CustomMessageForm'):
             form = plugin.get_message_form()
         self.assertIsInstance(form, CustomMessageForm)
-        self.assertEqual(form.auto_id, DEFAULT_FORM_FIELDS_ID)
 
     @patch.object(FeedbackPlugin, 'get_message_form')
     def test_plugin_context(self, get_form):
