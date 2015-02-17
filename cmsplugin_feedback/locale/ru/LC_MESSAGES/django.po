@@ -3,13 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Anton Egorov <anton.egoroff@gmail.com>, 2014
+# Anton Egorov <anton.egoroff@gmail.com>, 2014-2015
+# 
+# Translators:
+# Anton Egorov <anton.egoroff@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: cmsplugin-feedback\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-16 02:38+0300\n"
-"PO-Revision-Date: 2014-11-21 20:31+0000\n"
+"POT-Creation-Date: 2015-02-16 09:40-0600\n"
+"PO-Revision-Date: 2015-02-16 15:42+0000\n"
 "Last-Translator: Anton Egorov <anton.egoroff@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/cmsplugin-feedback/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +21,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: cms_plugins.py:22
+#: cms_plugins.py:14
 msgid "Feedback Plugin"
 msgstr "Форма обраной связи"
 
@@ -38,14 +41,32 @@ msgstr "Электронная почта"
 msgid "Message"
 msgstr "Сообщение"
 
-#: views.py:12
-msgid "Validation error"
-msgstr "Ошибка валидации"
+#: settings.py:16
+msgid "New feedback"
+msgstr "Новое сообщение от пользователя"
 
-#: views.py:13
-msgid "Your message was sent. Thank you!"
-msgstr "Ваше сообщение отправлено. Спасибо!"
+#: templates/cms/plugins/feedback-email.html:2
+#, python-format
+msgid "You've got a feedback message from %(name)s."
+msgstr "Вы получили сообщение от пользователя %(name)s."
+
+#: templates/cms/plugins/feedback-email.html:3
+#, python-format
+msgid "You can respond to it using admin %(url)s."
+msgstr "Вы можете ответить на него используя интерфейс администрирования по ссылке %(url)s."
+
+#: templates/cms/plugins/feedback-email.html:4
+msgid "The original message is:"
+msgstr "Оригинальное сообщение:"
 
 #: templates/cms/plugins/feedback.html:24
 msgid "Your message was sent. Thank you for feedback!"
 msgstr "Ваше сообщение отправлено. Спасибо за отклик!"
+
+#: views.py:14
+msgid "Validation error"
+msgstr "Ошибка валидации"
+
+#: views.py:15
+msgid "Your message was sent. Thank you!"
+msgstr "Ваше сообщение отправлено. Спасибо!"

@@ -4,13 +4,15 @@ import json
 from cms.api import add_plugin
 from cms.models import Placeholder
 from django.core.urlresolvers import reverse
+from django.http import HttpRequest
 from django.test import TestCase
 from freezegun import freeze_time
-from mock import patch
+from mock import patch, Mock
 
 from cmsplugin_feedback.cms_plugins import FeedbackPlugin
 from cmsplugin_feedback.forms import FeedbackMessageForm
 from cmsplugin_feedback.models import Message
+from cmsplugin_feedback.signals import form_submited
 from cmsplugin_feedback.views import JsonResponse, VALIDATION_ERROR, OK
 
 
@@ -19,6 +21,13 @@ class FormPostTest(TestCase):
         placeholder = Placeholder.objects.create(slot='test')
         self.plugin = add_plugin(placeholder, FeedbackPlugin, 'en')
         self.url = reverse('feedback-form', args=[self.plugin.id])
+        self.ok_data = {
+            'name': 'Anton Egorov',
+            'email': 'aeg@example.com',
+            'text': 'Thank you!',
+            'captcha_0': 'captcha_key',
+            'captcha_1': 'passed',
+        }
 
     def post(self, data, expect_code=None):
         res = self.client.post(self.url, data)
@@ -74,17 +83,21 @@ class FormPostTest(TestCase):
 
     @freeze_time('2014-11-10 23:44:00')
     def test_save_message(self):
-        data = {
-            'name': 'Anton Egorov',
-            'email': 'aeg@example.com',
-            'text': 'Thank you!',
-            'captcha_0': 'captcha_key',
-            'captcha_1': 'passed',
-        }
-        res = self.post(data, expect_code=200)
+        res = self.post(self.ok_data, expect_code=200)
         self.assertIn('id', res)
         message = Message.objects.get(pk=res['id'])
-        self.assertEqual(message.name, data['name'])
-        self.assertEqual(message.email, data['email'])
-        self.assertEqual(message.text, data['text'])
+        self.assertEqual(message.name, self.ok_data['name'])
+        self.assertEqual(message.email, self.ok_data['email'])
+        self.assertEqual(message.text, self.ok_data['text'])
         self.assertEqual(message.created_at, dt.datetime.now())
+
+    def test_signal_sent(self):
+        handler = Mock()
+        form_submited.connect(handler)
+        self.post(self.ok_data, expect_code=200)
+        handler.assert_called_once()
+        args, kwargs = handler.call_args
+        self.assertIn('message', kwargs)
+        self.assertIsInstance(kwargs['message'], Message)
+        self.assertIn('request', kwargs)
+        self.assertIsInstance(kwargs['request'], HttpRequest)

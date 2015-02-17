@@ -8,6 +8,8 @@ from django.views.generic import View
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 
+from .signals import form_submited
+
 
 VALIDATION_ERROR = _('Validation error')
 OK = _('Your message was sent. Thank you!')
@@ -38,6 +40,7 @@ class FeedbackView(View):
                 },
             }, status=400)
         form.save()
+        form_submited.send(self, message=form.instance, request=request)
         return JsonResponse({
             'message': unicode(OK),
             'id': form.instance.id,
