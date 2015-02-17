@@ -11,3 +11,5 @@ install:
   - pip install tox==1.8.1
 
 script: tox -e django-${DJANGO_VERSION},pep8
+
+after_script: cat /home/travis/build/satyrius/cmsplugin-feedback/.tox/django-${DJANGO_VERSION}/log/django-${DJANGO_VERSION}*.log
