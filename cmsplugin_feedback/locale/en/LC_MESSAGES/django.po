@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-16 09:40-0600\n"
+"POT-Creation-Date: 2015-03-06 08:14-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Anton Egorov <anton.egoroff@gmail.com>\n"
 "Language-Team: English (http://www.transifex.com/projects/p/cmsplugin-"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cms_plugins.py:14
+#: cms_plugins.py:13
 msgid "Feedback Plugin"
 msgstr ""
 
@@ -58,7 +58,11 @@ msgstr ""
 msgid "The original message is:"
 msgstr ""
 
-#: templates/cms/plugins/feedback.html:24
+#: templates/cms/plugins/feedback.html:20
+msgid "Submit"
+msgstr ""
+
+#: templates/cms/plugins/feedback.html:28
 msgid "Your message was sent. Thank you for feedback!"
 msgstr ""
 
