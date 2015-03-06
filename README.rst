@@ -64,7 +64,28 @@ Do not forget to include URLs to ``urls.py`` ::
 And to migrate your database ::
 
   django-admin.py migrate captcha cmsplugin_feedback
+  
+Notification
+------------
 
+Plugin will notify site managers on successful form submit (`MANAGERS` should be configured for Django). You can disable
+this behavior in your ``settings.py`` ::
+
+  CMS_FEEDBACK_NOTIFY_MANAGERS = False
+
+And tou can change default email subject ::
+
+  CMS_FEEDBACK_NOTIFY_SUBJECT = 'User feedback'
+
+You can write you own successful submit handler ::
+
+  from cmsplugin_feedback.signals import form_submited
+  from django.dispatch import receiver
+  
+  @receiver(form_submited)
+  def submit_handler(sender, message, request, *args, **kwargs):
+      pass
+  
 Roadmap
 =======
 - Python 3 support
