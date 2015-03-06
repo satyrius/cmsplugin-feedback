@@ -1,0 +1,6 @@
+{% load i18n %}
+{% blocktrans with name=message.name %}You've got a feedback message from {{ name }}.{% endblocktrans %}
+{% blocktrans %}You can respond to it using admin {{ url }}.{% endblocktrans %}
+{% trans "The original message is:" %}
+
+{{ message.text }}
