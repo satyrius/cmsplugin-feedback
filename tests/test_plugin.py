@@ -6,8 +6,8 @@ from django.test import TestCase
 from mock import patch
 from sekizai.context import SekizaiContext
 
-from cmsplugin_feedback.cms_plugins import FeedbackPlugin, \
-    DEFAULT_FORM_FIELDS_ID, DEFAULT_FORM_CLASS
+from cmsplugin_feedback.cms_plugins import FeedbackPlugin
+from cmsplugin_feedback.settings import DEFAULT_FORM_FIELDS_ID, DEFAULT_FORM_CLASS
 from cmsplugin_feedback.forms import FeedbackMessageForm
 
 

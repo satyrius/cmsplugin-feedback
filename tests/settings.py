@@ -31,3 +31,5 @@ INSTALLED_APPS = [
 TEMPLATE_CONTEXT_PROCESSORS = [
     'django.core.context_processors.request',
 ]
+
+CMS_FEEDBACK_NOTIFY_MANAGERS = False
