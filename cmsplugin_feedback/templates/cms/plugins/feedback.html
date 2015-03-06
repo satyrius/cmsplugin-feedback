@@ -1,17 +1,21 @@
 {% load sekizai_tags feedback_tags i18n %}
 
 {% block "feedback_form" %}
-  <form method="post" action="{% url "feedback-form" instance.id %}" id="feedback-form-{{ instance.id }}" class="{{ form_class }}">
-    {% for field in form %}
-      {% block "feedback_field" %}
-        {% if field|is_checkbox %}{{ field }}{% endif %}
-        <label for="{{ field.auto_id }}">{{ field.label|safe }}{% if field.field.required %}*{% endif %}</label>
-        {% if not field|is_checkbox %}
-          <div class="error-message error-{{ field.name }}" style="display: none"></div>
-          {{ field }}
-        {% endif %}
-      {% endblock %}
-    {% endfor %}
+  {% block "feedback_form_tag" %}
+    <form method="post" action="{% url "feedback-form" instance.id %}" id="feedback-form-{{ instance.id }}">
+  {% endblock %}
+    {% block "feedback_fields" %}
+        {% for field in form %}
+        {% block "feedback_field" %}
+            {% if field|is_checkbox %}{{ field }}{% endif %}
+            <label for="{{ field.auto_id }}">{{ field.label|safe }}{% if field.field.required %}*{% endif %}</label>
+            {% if not field|is_checkbox %}
+            <div class="error-message error-{{ field.name }}" style="display: none"></div>
+            {{ field }}
+            {% endif %}
+        {% endblock %}
+        {% endfor %}
+    {% endblock %}
     {% block "feedback_submit" %}
       <button type="submit">{% trans "Submit" %}</button>
     {% endblock %}
