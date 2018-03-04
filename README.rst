@@ -7,11 +7,11 @@ cmsplugin-feedback
 .. |ci| image:: https://travis-ci.org/satyrius/cmsplugin-feedback.png?branch=master
     :target: https://travis-ci.org/satyrius/cmsplugin-feedback
 
-.. |pypi| image:: https://pypip.in/version/cmsplugin-feedback/badge.png?text=pypi
+.. |pypi| image:: https://img.shields.io/pypi/v/cmsplugin-feedback.svg?label=pypi
     :target: https://pypi.python.org/pypi/cmsplugin-feedback/
     :alt: Latest Version
 
-.. |status| image:: https://pypip.in/status/cmsplugin-feedback/badge.png
+.. |status| image:: https://img.shields.io/pypi/status/cmsplugin-feedback.svg
     :target: https://pypi.python.org/pypi/cmsplugin-feedback/
     :alt: Development Status
 
