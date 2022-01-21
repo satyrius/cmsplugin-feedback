@@ -5,7 +5,7 @@ flake8==2.3.0
 freezegun==0.2.2
 gnureadline==6.3.3
 ipdb==0.8
-ipython==2.4.1
+ipython==7.16.3
 jedi==0.8.1
 mccabe==0.3
 mock==1.0.1
